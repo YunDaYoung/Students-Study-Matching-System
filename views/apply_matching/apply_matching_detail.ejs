@@ -1,0 +1,69 @@
+<form class="form-signup" method="POST" action="/apply_matching">
+    <div style="margin-left: 35%;">
+        <h1 class="h3 mb-3 font-weight-normal">팀 매칭 신청</h1>
+
+        <div class="col-1" style="float: left; margin-right: 5%;">
+            <table>
+                <td></td>
+                <td>월</td>
+                <td>화</td>
+                <td>수</td>
+                <td>목</td>
+                <td>금</td>
+                <% for(var i=1; i <= 9; i++){%>
+                <tr>
+                    <td><%= i %></td>
+                    <%for(var j=0;j < 5; j++){%>
+                        <% b=false %>
+                        <%ct.forEach(a=>{%>
+                            <%console.log("aaaaaa",a.time_code*1,9*j+i)%>
+                            
+                            <%if(9*j+i == a.time_code*1){%>
+                                <% b=true %>
+                            <%}%>
+                        <%})%>
+                        <%console.log("bbbbbbb",b,9*j+i)%>
+                        <%if(b==true){%>
+                            <td><input type="checkbox" name="select_time" value="<%= 9*j+i%>"></td>
+                        <%}else{%>
+                            <td><input type="checkbox" name="select_time" value="<%= 9*j+i%>" disabled></td>
+                        <%}%>
+                    <%}%>
+                </tr>
+                <%}%>
+            </table>
+        </div>
+        <div>
+            <h4>이름</h4>
+            <label for="inputName" class="sr-only">이름</label>
+            <input style="margin-top: 10px; width: 30%; margin-bottom: 10px;" type="text" class="form-control"
+                placeholder="<%= users.name%>" name="name" required disabled="true">
+            <h4>연락처</h4>
+            <label for=" inputPhoneNum" class="sr-only">연락처</label>
+            <input style="margin-top: 10px; width: 30%; margin-bottom: 10px;" type="text" class="form-control"
+                placeholder="<%= users.phone_no%>" name="phone_no" required disabled="true">
+
+            <h4>학번</h4>
+            <label for=" inputStudent_no" class="sr-only">학번</label>
+            <input style="margin-top: 10px; width: 30%; margin-bottom: 10px;" type="text" class="form-control"
+                placeholder="<%= users.student_no%>" name="student_no" required disabled="true">
+            <hr>
+        </div>
+        <div>
+            <label>배우고 싶은 언어</label>
+            <select style="width: 100px;" name="wnat_language">
+                <% for( var i=0; i < language.length; i++ ){%>
+                <option><%= language[i].language_name%></option>
+                <% }%>
+            </select>
+            <label>사용 가능한 언어</label>
+            <select style="width: 100px;" name="available_language">
+                <% for( var i=0; i < language.length; i++ ){%>
+                <option><%= language[i].language_name%></option>
+                <% }%>
+            </select>
+        </div>
+    </div>
+
+    <button style=" margin-top: 30px;" class="btn btn-lg btn-primary btn-block" type="submit">매칭 신청</button>
+</form>

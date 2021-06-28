@@ -1,0 +1,41 @@
+<form class="form-signup" method="POST" action="/signup">
+    <h1 class="h3 mb-3 font-weight-normal">회원가입</h1>
+    <br>
+    <h4>아이디 입력</h4>
+    <label for="inputID" class="sr-only">아이디</label>
+    <input style="margin-top: 30px;" type="text"  class="form-control" placeholder="아이디 입력..." name="id"
+        required autofocus>
+    <br>
+    <h4>비밀번호 입력</h4>
+    <label for="inputPassword" class="sr-only">비밀번호</label>
+    <input style="margin-top: 30px;" type="password"  class="form-control" placeholder="비밀번호 입력..."
+        name="pw" required>
+    <hr>
+    <h4>이름 입력</h4>
+    <label for="inputName" class="sr-only">이름</label>
+    <input style="margin-top: 30px;" type="text" class="form-control" placeholder="이름 입력..." name="name"
+        required>
+    <hr>
+    <h4>학년 입력</h4>
+    <label for="inputGrade" class="sr-only">학년</label>
+    <input style="margin-top: 30px;" type="number"  class="form-control" placeholder="학년 입력..." name="grade" min="1" max="6"
+        required autofocus>
+    <hr>
+    <h4>연락처 입력</h4>
+    <label for=" inputPhoneNum" class="sr-only">연락처</label>
+    <input style="margin-top: 30px;" type="text" class="form-control" placeholder="연락처 입력..."
+        name="phone_no" required>
+    <hr>
+    <h4>전공</h4>
+    <label for=" inputMajor" class="sr-only">주소</label>
+    <input style="margin-top: 30px;" type="text" class="form-control" placeholder="전공 입력..."
+        name="major" required>
+    <hr>
+    <h4>학번</h4>
+    <label for=" inputStudent_no" class="sr-only">주소</label>
+    <input style="margin-top: 30px;" type="text" class="form-control" placeholder="학번 입력..."
+        name="student_no" required>
+    <hr>
+
+    <button style=" margin-top: 30px;" class="btn btn-lg btn-primary btn-block" type="submit">회원가입</button>
+</form>
