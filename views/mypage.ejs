@@ -1,0 +1,65 @@
+<h1>마이페이지</h1>
+<br />
+<h2>매칭된 팀</h2>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">팀코드</th>
+      <th scope="col">팀원</th>
+      <th scope="col">상세보기</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%if(isNull != 0){%>
+    <% for(var i = 0; i< data.member2.length; i++){%> 
+        <% if(data.member2[i].team_keep_dismantle_yes_no == 'n') {%>
+        <tr>
+            <td>
+              <%=data.member2[i].team_code %>
+            </td>
+             <td>
+              <%= data.member2[i].ID%>
+            </td>
+            <td>
+              <a href="/mypage/matching/<%=data.member2[i].team_code%>">
+                <button type="button" class="btn btn-primary">상세보기</button></a
+              >
+            </td>
+          </tr>
+          <%}%>
+    <%}%>
+    <%}%>
+  </tbody>
+</table>
+<br />
+<h2>신청한 팀</h2>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">신청코드</th>
+      <th scope="col">사용가능한 언어</th>
+      <th scope="col">배우고싶은 언어</th>
+      <th scope="col">상세보기</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(var i = 0; i< data.apply.length; i++){%>
+    <tr>
+      <td>
+        <%= data.apply[i].apply_code %>
+      </td>
+      <td>
+        <%= data.apply[i].use_available_language_name%>
+      </td>
+      <td>
+        <%= data.apply[i].wnat_language_name%>
+      </td>
+      <td>
+        <a href="/mypage/apply/<%= data.apply[i].apply_code %>">
+          <button type="button" class="btn btn-primary">상세보기</button></a
+        >
+      </td>
+    </tr>
+    <%}%>
+  </tbody>
+</table>

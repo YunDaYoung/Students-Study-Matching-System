@@ -1,0 +1,62 @@
+<h1>활동일지 현황</h1>
+<table>
+  - : 팀 매칭전&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;□ : 검사전&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;O : 점수부여&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;△ : 수정요청&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;X : 안씀&nbsp;&nbsp;&nbsp;&nbsp;|
+  <thead>
+    <tr>
+      <th scope="col" style="width: 50px;">팀해체여부</th>
+      <th scope="col">팀번호</th>
+      <th scope="col">ID</th>
+      <% for(var i = 1; i <= 16; i++) {%>
+      <th scope="col" colspan="4" style="text-align: center; border: 1px solid gold"><%= i %>주차</th>
+      <%}%>
+    </tr>
+  </thead>
+  <tbody>
+    <% var g %>
+    <% for(g = 0; g < data.length; g++) { %>
+      <tr>
+      <td><%= data[g].team_keep_dismantle_yes_no%></td>
+      <td><%= data[g].team_code %></td>
+      <td><%= data[g].ID %></td>
+      <% for(var i = 36; i <= data[g].team_matched_week; i++){%>
+        <% for(var j = 1; j <=4; j++) { %>
+          <td>-</td>
+        <%}%>
+      <%}%>
+      <% var temp1 = g %>
+      <% for(var i = data[g].team_matched_week + 1; i <= time; i++) { %>
+        <% for(var j = 1; j <= 4; j++) { %>
+          <% if(temp1 == data.length) {%>
+            <td>×</td>
+          <%} else if(data[g].ID != data[temp1].ID || data[g].team_code != data[temp1].team_code) { %>
+            <td>×</td>
+          <%} else if(data[temp1].activityLog_week == i) {%>
+            <%= console.log(data[temp1].activityLog_week + "-" + data[temp1].activityLog_week_count) %>
+            <% if(data[temp1].activityLog_week_count != j){ %>
+              <td>×</td>
+            <%} else if(data[temp1].activityLog_week_count == j){%>
+              <% if (data[temp1].activityLog_update_yes_no == 'y') {%>
+                <td>△</td>
+              <% } else if(data[temp1].receive_score == 100 && data[temp1].activityLog_update_yes_no == 'n') { %>
+                <td>O</td>
+              <% } else if(data[temp1].receive_score == 0 && data[temp1].activityLog_update_yes_no == 'n') { %>
+                <td>□</td>
+              <%}%>
+              <% temp1++; %> 
+            <%}%>
+          <%} else if(data[temp1].activityLog_week != i) {%>
+            <td>×</td>
+          <%}%>
+        <%}%>
+      <%}%>
+      <% for(var i = time + 1; i <= 36 + 15; i++){ %>
+        <% for(var j = 1; j <=4; j++) { %>
+          <td>×</td>
+        <%}%>
+      <%}%>
+      <%= console.log("data" + temp1) %>
+      <% g = temp1 - 1 %>
+      </tr>
+    <% } %>
+  </tbody>
+</table>

@@ -1,0 +1,71 @@
+<div>
+  <h5>활동일지 상세화면</h5>
+  <p><span>글 쓴이 </span>&nbsp;&nbsp; <%= data.activity.ID %></p>
+  <p>
+    <span>글 상세내용</span>&nbsp;&nbsp; <%= data.activity.activityLog_contents
+    %>
+  </p>
+  <p><span>등록날짜</span>&nbsp;&nbsp;<%= data.activity.activityLog_date %></p>
+  <% if(data.reply){%>
+  <p><span>댓글</span>&nbsp;&nbsp;<%= data.reply.reply_contents %></p>
+  <%} else{%>
+  <p>댓글을 입력해주세요.</p>
+  <form action="http://localhost:3000/addReply" method="POST">
+    <input
+      type="hidden"
+      name="activityLog_code"
+      value="<%= data.activity.activityLog_code%>"
+    />
+    <div class="input-group mb-3" style="width: 1000px; margin: 0 auto">
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        name="replyContents"
+        placeholder="댓글 내용"
+        rows="5"
+        cols="200"
+      ></textarea>
+    </div>
+
+    <div class="w-100 text-center">
+      <button type="submit" class="btn btn-primary">등록하기</button>
+    </div>
+  </form>
+  <% } %>
+
+  <br />
+</div>
+
+<br />
+<div class="w-100 text-center">
+  <% if(data.activity.receive_score == 100){%>
+  <p>점수를 주었습니다.</p>
+  <%} else{%>
+  <form
+    style="display: inline;"
+    action="http://localhost:3000/addScore"
+    method="POST"
+  >
+    <input
+      type="hidden"
+      name="activityLog_code"
+      value="<%= data.activity.activityLog_code%>"
+    />
+    <button type="submit" class="btn btn-light">점수주기</button>
+  </form>
+  <% } %> <% if(data.activity.activityLog_update_yes_no == 'y'){%>수정통보
+  요청을 했습니다. <%} else{%>
+  <form
+    style="display: inline;"
+    action="http://localhost:3000/addUpdateState"
+    method="POST"
+  >
+    <input
+      type="hidden"
+      name="activityLog_code"
+      value="<%= data.activity.activityLog_code%>"
+    />
+    <button type="submit" class="btn btn-light">수정통보</button>
+  </form>
+  <% } %>
+</div>

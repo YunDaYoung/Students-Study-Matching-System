@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <%-include('../head/bootstrap.ejs')%>
+  <style>
+    .form-signup {
+      width: 100%;
+      max-width: 800px;
+      padding: 15px;
+      margin: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <%-include('../head/nav.ejs')%>
+  <div class="wrap">
+      <%-include(page)%>
+  </div>
+</body>
+</html>

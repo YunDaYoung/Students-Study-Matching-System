@@ -1,0 +1,110 @@
+<form method="POST" action="/teamMatchingUpdate/<%= data[0].team_code%>">
+    <h2>팀 시간 수정화면</h2>
+    <br />
+    <h4>매칭된 팀 정보</h4>
+    <table>
+      <tr>
+        <td>
+            <table width = "500dp">
+                <td></td>
+                <td>월</td>
+                <td>화</td>
+                <td>수</td>
+                <td>목</td>
+                <td>금</td>
+                <% for(var i=1; i <= 9; i++){%>
+                <tr>
+                    <td><%= i %></td>
+                    <%for(var j=0;j < 5; j++){%>
+                        <% b=false %>
+                        <% d=false%>
+                        <% data.forEach(a=>{%>                            
+                            <%if(9*j+i == a.time_code*1){%>
+                                <% b=true %>
+                            <%}%>
+                        <%})%>
+                        <% class_time.forEach(c=>{%>                            
+                            <%if(9*j+i == c.time_code*1){%>
+                                <% d=true %>
+                            <%}%>
+                        <%})%>
+                        <%if(b==true && d==true){%>
+                            <td><input type="checkbox" name="select_time" value="<%= 9*j+i%>" checked></td>
+                        <%}else if(b==false && d==true){%>
+                            <td><input type="checkbox" name="select_time" value="<%= 9*j+i%>" ></td>
+                        <%}else if(b==true && d==false){%>
+                            <td><input type="checkbox" name="select_time" value="<%= 9*j+i%>" checked></td>
+                        <%}else{%>
+                            <td><input type="checkbox" name="select_time" value="<%= 9*j+i%>" disabled></td>
+                        <%}%>
+                    <%}%>
+                </tr>
+                <%}%>
+            </table>
+        </td>
+        <td>
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">이름</th>
+                    <th scope="col">학번</th>
+                    <th scope="col">전공</th>
+                    <th scope="col">전화번호</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for(var i = 0; i< 2; i++){%>
+                  <tr>
+                    <td>
+                      <%= data[i].name %>
+                    </td>
+                    <td>
+                      <%= data[i].student_no %>
+                    </td>
+                    <td>
+                      <%= data[i].major %>
+                    </td>
+                    <td>
+                      <%= data[i].phone_no %>
+                    </td>
+                  </tr>
+                  <%}%>
+                </tbody>
+              </table>
+              <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">매칭된 언어</th>
+                      <th scope="col">매칭된 시간1</th>
+                      <th scope="col">매칭된 시간2</th>
+                      <th scope="col">매칭된 시간3</th>
+                      <th scope="col">매칭된 시간4</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                        <td>
+                            <%= data[0].matched_language + " - " + data[1].matched_language%> 
+                        </td>
+                        <% for(var i = 0; i< data.length; i+=2){%>
+                        <td>
+                          <%= data[i].time_code %>
+                        </td>
+                        <%}%>
+                    </tr>
+                  </tbody>
+                </table>
+        </td>
+        
+      </tr>
+      <tr style="text-align: right;">
+          <td>
+
+          </td>
+          <td>
+                <input type="submit" class="btn btn-primary" value="시간 변경">
+                <input type="button" class="btn btn-primary" onclick="location.href='/mypage/matching/<%= data[0].team_code%>'" value="뒤로가기"/>
+          </td>
+      </tr>
+    </table>    
+  </form>

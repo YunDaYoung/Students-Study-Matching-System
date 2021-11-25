@@ -1,0 +1,117 @@
+<form method="POST" action="/registerWarning/<%= team_code%>">
+  <h2>팀 상세화면</h2>
+  <br />
+  <h4>매칭된 팀 정보</h4>
+  <table>
+    <tr>
+      <td>
+          <table width = "500dp">
+              <td></td>
+              <td>월</td>
+              <td>화</td>
+              <td>수</td>
+              <td>목</td>
+              <td>금</td>
+              <% for(var i=1; i <= 9; i++){%>
+              <tr>
+                  <td><%= i %></td>
+                  <%for(var j=0;j < 5; j++){%>
+                      <% b=false %>
+                      <% data.forEach(a=>{%>                            
+                          <%if(9*j+i == a.time_code*1){%>
+                              <% b=true %>
+                          <%}%>
+                      <%})%>
+                      <%if(b==true){%>
+                          <td><input type="checkbox" name="select_time" value="<%= 9*j+i%>" checked disabled></td>
+                      <%}else{%>
+                          <td><input type="checkbox" name="select_time" value="<%= 9*j+i%>" disabled></td>
+                      <%}%>
+                  <%}%>
+              </tr>
+              <%}%>
+          </table>
+      </td>
+      <td>
+          <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">이름</th>
+                  <th scope="col">학번</th>
+                  <th scope="col">전공</th>
+                  <th scope="col">전화번호</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for(var i = 0; i< 2; i++){%>
+                <tr>
+                  <td>
+                    <%= data[i].name %>
+                  </td>
+                  <td>
+                    <%= data[i].student_no %>
+                  </td>
+                  <td>
+                    <%= data[i].major %>
+                  </td>
+                  <td>
+                    <%= data[i].phone_no %>
+                  </td>
+                </tr>
+                <%}%>
+              </tbody>
+            </table>
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">매칭된 언어</th>
+                    <th scope="col">매칭된 시간1</th>
+                    <th scope="col">매칭된 시간2</th>
+                    <th scope="col">매칭된 시간3</th>
+                    <th scope="col">매칭된 시간4</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                      <td>
+                          <%= data[0].matched_language + " - " + data[1].matched_language%> 
+                      </td>
+                      <% for(var i = 0; i< data.length; i+=2){%>
+                        <% if(data[i].time_code > 9 && data[i].time_code < 19) {%>
+                          <td>
+                            화요일 <%= Number(data[i].time_code)-9 %>
+                          </td>
+                        <%} else if(data[i].time_code > 18 && data[i].time_code < 28) {%>
+                          <td>
+                            수요일 <%=  Number(data[i].time_code)-18 %>
+                          </td>
+                        <%} else if(data[i].time_code > 27 && data[i].time_code < 37) {%>
+                          <td>
+                            목요일 <%=  Number(data[i].time_code)-27 %>
+                          </td>
+                        <%} else if(data[i].time_code > 36 && data[i].time_code < 46) {%>
+                          <td>
+                            금요일 <%=  Number(data[i].time_code)-36 %>
+                          </td>
+                        <%} else {%>
+                          <td>
+                            월요일 <%= data[i].time_code %>
+                          </td>
+                        <%}%>
+                      <%}%>
+                  </tr>
+                </tbody>
+              </table>
+              
+              <a href="/mypage/matching/updateTeamData/<%=team_code%>">
+                <button type="button" class="btn btn-primary">팀 정보 수정</button>
+              </a>
+              <a href="/mypage/matching/activityLog/<%=team_code%>">
+                <button type="button" class="btn btn-primary">활동일지 목록보기</button>
+              </a><br/><br/>
+              <textarea cols="50" rows="2" placeholder="신고사유를 입력하시오" name="warning_reason"></textarea>
+              <input type="submit" class="btn btn-primary" value="팀원 신고" >
+      </td>
+    </tr>
+  </table>    
+</form>

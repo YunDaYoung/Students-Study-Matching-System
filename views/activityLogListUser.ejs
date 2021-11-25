@@ -1,0 +1,44 @@
+<h1>사용자 활동일지 목록</h1>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">등록날짜</th>
+      <th scope="col">등록한 아이디</th>
+      <th scope="col">활동일지 상태</th>
+      <th scope="col">상세보기</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(var i = 0; i< data.length; i++){%>
+    <tr>
+      <td>
+        <%= data[i].activityLog_date %>
+      </td>
+      <td>
+        <%= data[i].ID%>
+      </td>
+      <% if(data[i].activityLog_update_yes_no == 'y'){%>
+      <td>수정필요</td>
+      <%} else if(data[i].activityLog_update_yes_no == 'n' &&
+      data[i].receive_score==100){%>
+      <td>검사완료</td>
+      <%} else if(data[i].activityLog_update_yes_no == 'n' &&
+      data[i].receive_score==0){%>
+      <td>검사전</td>
+      <% } %>
+      <td>
+        <a
+          href="/mypage/matching/activityLog/detail/<%=data[i].activityLog_code%>"
+        >
+          <button type="button" class="btn btn-primary">상세보기</button></a
+        >
+      </td>
+    </tr>
+    <%}%>
+  </tbody>
+</table>
+<div class="w-100 text-right" style="padding-right: 100px;">
+  <a href="/activity_log_regist/<%=team_code%>">
+    <button type="button" class="btn btn-primary">활동일지 등록</button></a
+  >
+</div>

@@ -15,14 +15,11 @@
                     <td><%= i %></td>
                     <%for(var j=0;j < 5; j++){%>
                         <% b=false %>
-                        <%ct.forEach(a=>{%>
-                            <%console.log("aaaaaa",a.time_code*1,9*j+i)%>
-                            
+                        <%ct.forEach(a=>{%>                            
                             <%if(9*j+i == a.time_code*1){%>
                                 <% b=true %>
                             <%}%>
                         <%})%>
-                        <%console.log("bbbbbbb",b,9*j+i)%>
                         <%if(b==true){%>
                             <td><input type="checkbox" name="select_time" value="<%= 9*j+i%>"></td>
                         <%}else{%>

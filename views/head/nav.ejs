@@ -1,8 +1,70 @@
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-    <a class="my-0 mr-md-auto font-weight-normal" style="font-size: 50px;" href="/">외국인 유학생과 함께하는 회화 매칭 시스템</a>
-    <!--로그인 하고 나서-->
-    <input type="button" class="btn btn-outline-primary" onclick="location.href='/login'" value="로그인">
-    <!--로그인했을때-->
-    <input type="button" class="btn btn-outline-primary" onclick="location.href='/login'" value="로그아웃">
-    <input type="button" class="btn btn-outline-primary" onclick="location.href='/apply_matching'" value="매칭신청">
+<h1
+  style="position:absolute;z-index: 9999;left:43.5%;color: rgba(255,96,0);font-family: sans-serif;font-weight: lighter"
+></h1>
+<nav
+  class="navbar navbar-expand-lg navbar-light w-100"
+  style="background: rgba(51,51,51);padding:10px 15%;position:relative"
+>
+  <a
+    class="navbar-brand"
+    href="/"
+    style="color:white;font-family: sans-serif; margin-left: 36.2%;"
+    >외국인유학생과함께하는 회화 매칭 시스템</a
+  >
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse text-" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div
+  style="background: white;color:black;padding:10px 15%;position:relative;text-align: center;border:1px solid silver
+  "
+>
+  <!--로그인 하고 나서-->
+
+  <% if(users && users.name=="관리자"){ %>
+  <span style="color:royalblue; font-weight: bold;"><%=users.name%></span>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <span><a href="/activityLogList">활동일지 목록</a></span>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <span><a href="/activityLogUpdateList">활동일지 수정 목록</a></span>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <span><a href="/warningList">신고 목록</a></span>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <span><a href="/activityLog">일지현황</a></span>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <span><a href="/logout">Logout</a></span>
+  <%} else if(users && users.name!="관리자"){%>
+  <span style="color:royalblue; font-weight: bold;"><%=users.grade%></span>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <span style="color:royalblue; font-weight: bold;"><%=users.name%></span>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <span><a href="/apply_matching">매칭신청</a></span>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <span><a href="/mypage">마이페이지</a></span>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <span><a href="/logout">Logout</a></span>
+  <%} else{%>
+  <span><a href="/Flogin">Foreign Login</a></span
+  >&nbsp;&nbsp;&nbsp;&nbsp;
+  <span><a href="/login">한국인로그인</a></span
+  >&nbsp;&nbsp;&nbsp;&nbsp;
+
+  <!--로그인했을때-->
+  <% } %>
+  <!--관리자 전용-->
 </div>

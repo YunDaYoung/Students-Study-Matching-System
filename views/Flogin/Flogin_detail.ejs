@@ -1,0 +1,42 @@
+<form class="form-signin" method="POST" action="/Flogin">
+  <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+  <label for="inputEmail" class="sr-only">ID</label>
+  <input
+    style="margin-top: 30px;"
+    type="text"
+    id="inputEmail"
+    class="form-control"
+    placeholder="input ID ..."
+    name="id"
+    value=""
+    required
+    autofocus
+  />
+  <label for="inputPassword" class="sr-only">password</label>
+  <input
+    style="margin-top: 30px;"
+    type="password"
+    id="inputPassword"
+    class="form-control"
+    placeholder="input PASSWORD..."
+    name="pw"
+    value=""
+    required
+  />
+  <div style="margin-top: 30px;">
+    <a href="/Fsignup">JOIN</a>
+  </div>
+  <button
+    style="margin-top: 30px;"
+    class="btn btn-lg btn-primary btn-block"
+    type="submit"
+  >
+    Login
+  </button>
+  <input
+    class="btn btn-lg btn-primary btn-block "
+    type="button"
+    value="돌아가기"
+    onclick="location.href='/'"
+  />
+</form>

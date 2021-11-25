@@ -1,0 +1,24 @@
+<form class="form-signup" method="POST" action="/activityLog_regist/<%=class_time[0].team_code %>">
+    <h1 class="h3 mb-3 font-weight-normal">활동일지 등록</h1>
+    <br>
+    <h4>활동일지 내용</h4>
+    <%for(var i = 0 ; i < 4; i++ ){%>
+        <%var count = false%>
+        <% for( j = 0 ; j < week_count.length; j++){%>
+            <%  if(week_count[j].activityLog_week_count-1 == i){%>
+                <%  count=true%>
+            <%}%>
+            <%}%>
+            <%if(count==true){%>
+            <input style="margin-left: 7%;" type="radio" name="week_count" value="<%= i+1 %>" disabled><%= class_time[i].available_day%>요일 <%= class_time[i].available_class%>교시
+            <% }else{%>
+            <input style="margin-left: 7%;" type="radio" name="week_count" value="<%= i+1 %>"><%= class_time[i].available_day%>요일 <%= class_time[i].available_class%>교시
+            <%}%>
+    <%}%>
+    <textarea style="margin-top: 30px; height: 200px;" type="text"  class="form-control" placeholder="활동 내용 100자 이상 작성" name="activityLog_contents"
+        required autofocus ></textarea>
+    <hr>
+
+    <button style=" margin-top: 30px;" class="btn btn-lg btn-primary btn-block" type="submit">등록하기</button>
+    <input style=" margin-top: 30px;" class="btn btn-lg btn-danger btn-block" type="button" value="취소하기" onclick="location.href='/mypage/matching/activityLog/<%=class_time[0].team_code%>'">
+</form>

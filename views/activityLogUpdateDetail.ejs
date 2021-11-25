@@ -1,0 +1,39 @@
+<div>
+  <h5>활동일지 수정 상세화면</h5>
+  <p><span>글 쓴이 </span>&nbsp;&nbsp; <%= data.activity.ID %></p>
+  <p>
+    <span>글 상세내용</span>&nbsp;&nbsp; <%= data.activity.activityLog_contents
+    %>
+  </p>
+  <p><span>등록날짜</span>&nbsp;&nbsp;<%= data.activity.activityLog_date%></p>
+
+  <form action="http://localhost:3000/updateReply" method="POST">
+    <input
+      type="hidden"
+      name="activityLog_code"
+      value="<%= data.activity.activityLog_code%>"
+    />
+    <div class="input-group mb-3" style="width: 1000px; margin: 0 auto">
+      <input
+        style="height: 100px;"
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        name="replyContents"
+        value="<%= data.reply.reply_contents%>"
+        rows="5"
+        cols="200"
+      />
+    </div>
+
+    <div class="w-100 text-center">
+      <button type="submit" class="btn btn-primary">수정하기</button>
+    
+      <a
+          href="/activityLogUpdateList"
+        >
+      <button type="button" class="btn btn-primary">뒤로가기</button></a>
+    </div>
+  </form>
+
+  <br />
+</div>

@@ -1,0 +1,48 @@
+<div>
+  <h5>사용자 활동일지 상세화면</h5>
+  <p><span>글 쓴이 </span>&nbsp;&nbsp; <%= data.activity.ID %></p>
+  <p>
+    <span>글 상세내용</span>&nbsp;&nbsp; <%= data.activity.activityLog_contents
+    %>
+  </p>
+  <p>
+    <span>등록날짜</span>&nbsp;&nbsp;
+    <% var year = parseInt(data.activity.activityLog_date/10000)%>
+    <% var month = parseInt(data.activity.activityLog_date%10000/100) %>
+    <% var day = parseInt(data.activity.activityLog_date%100)%>
+
+    <% if(month < 10 ){ %>
+      <% month = '0'+month %>
+    <%}%>
+    <%if(day < 10 ){%>
+      <%day = '0'+day%>
+    <%}%>
+    <%= year + '년' + month + '월' + day + '일'%>
+  </p>
+  <br /><br />
+  <p>댓글정보</p>
+  <% if(data.reply){%>
+  <div
+    style="border: 1px solid gray; width:800px; text-align:center;margin-left: 150px;"
+  >
+    <p>&nbsp;&nbsp;<%= data.reply.reply_contents %></p>
+  </div>
+
+  <% } %>
+
+  <br />
+</div>
+
+<br />
+<div class="w-100 text-center">
+  <% if(data.activity.receive_score == 100){%>
+  <p>점수 지급됨</p>
+  <%} else{%>
+  <p>점수 지급 불가</p>
+  <% } %>
+</div>
+<a
+  href="/mypage/matching/activityLog/detail/update/<%=data.activity.activityLog_code%>"
+>
+  <button type="button" class="btn btn-primary">활동일지 수정</button></a
+>

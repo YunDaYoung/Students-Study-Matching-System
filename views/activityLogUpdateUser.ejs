@@ -1,0 +1,16 @@
+<div>
+  <form class="form-signin" method="POST" action="http://localhost:3000/activityLogUpdate">
+    <h1 class="h3 mb-3 font-weight-normal">활동일지 수정화면</h1>
+    <input type="hidden" name="activityLog_code" value="<%= data[0].activityLog_code%>" />
+
+    <div class="form-group" style="margin: 10px 20px;">
+      <label for="exampleFormControlTextarea1">활동일지 내용</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="contents">
+<%= data[0].activityLog_contents%></textarea>
+    </div>
+
+    <button style="margin-top: 30px; margin-left: 540px;" type="submit" class="btn btn-primary">
+      수정하기
+    </button>
+  </form>
+</div>

@@ -16,11 +16,6 @@
     <input style="margin-top: 30px;" type="text" class="form-control" placeholder="이름 입력..." name="name"
         required>
     <hr>
-    <h4>학년 입력</h4>
-    <label for="inputGrade" class="sr-only">학년</label>
-    <input style="margin-top: 30px;" type="number"  class="form-control" placeholder="학년 입력..." name="grade" min="1" max="6"
-        required autofocus>
-    <hr>
     <h4>연락처 입력</h4>
     <label for=" inputPhoneNum" class="sr-only">연락처</label>
     <input style="margin-top: 30px;" type="text" class="form-control" placeholder="연락처 입력..."
@@ -32,10 +27,16 @@
         name="major" required>
     <hr>
     <h4>학번</h4>
-    <label for=" inputStudent_no" class="sr-only">주소</label>
+    <label for=" inputStudent_no" class="sr-only">학번</label>
     <input style="margin-top: 30px;" type="text" class="form-control" placeholder="학번 입력..."
         name="student_no" required>
     <hr>
 
     <button style=" margin-top: 30px;" class="btn btn-lg btn-primary btn-block" type="submit">회원가입</button>
+    <input
+    class="btn btn-lg btn-primary btn-block "
+    type="button"
+    value="돌아가기"
+    onclick="location.href='/login'"
+  />
 </form>

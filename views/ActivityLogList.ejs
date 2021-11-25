@@ -1,0 +1,32 @@
+<br />
+<h1 style="text-align: center;">활동일지 목록</h1>
+<br />
+<table class="table table-hover" style="margin-left: 20px;width:1100px">
+  <thead style="text-align: center;font-family: sans-serif;">
+    <tr>
+      <th scope="col">등록날짜</th>
+      <th scope="col">등록한 아이디</th>
+      <th scope="col">상세보기</th>
+    </tr>
+  </thead>
+  <tbody style="text-align: center;font-family: sans-serif;">
+    <% for(var i = 0; i< data.length; i++){%> <%
+    if(data[i].activityLog_update_yes_no == 'n'){%>
+    <tr>
+      <td>
+        <%= data[i].activityLog_date %>
+      </td>
+      <td>
+        <%= data[i].ID%>
+      </td>
+      <td>
+        <a
+          href="/activityLogList/activityLogDetail/<%=data[i].activityLog_code%>"
+        >
+          <button type="button" class="btn btn-secondary">상세보기</button></a
+        >
+      </td>
+    </tr>
+    <%}%> <%}%>
+  </tbody>
+</table>
